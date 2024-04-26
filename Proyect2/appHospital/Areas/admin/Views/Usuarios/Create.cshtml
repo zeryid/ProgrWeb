@@ -1,0 +1,76 @@
+﻿@model appHospital.Models.Usuario
+@{
+    ViewData["Title"] = "Crear Usuario";
+}
+
+<br />
+<br />
+<h3 class="text-center">Crear un nuevo Usuario</h3>
+<form method="POST" asp-action="Create">
+    <div class="row px-2 offset-1 Border">
+        <div asp-validation-summary="All" class="text-danger">
+        </div>
+        <div class="col-10 offset-1 mt4">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Usuarios"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Usuarios" class="form-control" placeholder="Ingresa el Nombre de Usuario" />
+                    <span asp-validation-for="Usuarios" class="text-danger"></span>
+                </div>
+            </div>
+            <br />
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Contraseña"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Contraseña" class="form-control" placeholder="Ingresa la Contraseña" />
+                    <span asp-validation-for="Contraseña" class="text-danger"></span>
+                </div>
+            </div>
+            <br />
+            <div class="col-8">
+                @* <div class="col-4">
+                    <label asp-for="Rol"></label>
+                    <div class="col-8">
+                        <select asp-for="Id_Rol" class="form-control">
+                            <option value="">Selecciona el rol</option>
+                            @if (ViewBag.Roles != null)
+                            {
+                                foreach (var rol in ViewBag.Roles)
+                                {
+                                    <option value="@rol.Id_Rol">@rol.NombreRol</option>
+                                }
+                            }
+                        </select>
+                        <span asp-validation-for="Id_Rol" class="text-danger"></span>
+                    </div>
+                </div> *@
+            </<div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Estado"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Estado" class="form-control" placeholder="Ingresa el estado" />
+                    <span asp-validation-for="Estado" class="text-danger"></span>
+                </div>
+            </div>
+            <br />
+            
+
+            <div class="form-group row">
+                <div class="col-8">
+                    <partial name="_VistaCrearVolver" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

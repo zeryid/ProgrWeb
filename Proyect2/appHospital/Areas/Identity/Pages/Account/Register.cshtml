@@ -1,0 +1,91 @@
+﻿@page
+@using appHospital.Utilidades
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-2">
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h2>Create a new account.</h2>
+            <hr />
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="Input.Email">Email</label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Usuarios" class="form-control" autocomplete="" aria-required="true" placeholder="ejm: usuario 1 " />
+                <label asp-for="Input.Usuarios">Usuarios</label>
+                <span asp-validation-for="Input.Usuarios" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Contraseña" class="form-control" autocomplete="" aria-required="true" placeholder="Contraseña" />
+                <label asp-for="Input.Contraseña">Contraseña</label>
+                <span asp-validation-for="Input.Contraseña" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Estado" class="form-control" autocomplete="" aria-required="true" placeholder="Estado" />
+                <label asp-for="Input.Estado">Estado</label>
+                <span asp-validation-for="Input.Estado" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-6" >
+                    <h4> 
+                        Seleccionar Rol de Usuario
+                    </h4>
+                </div>
+                <div class="col-5">
+                    <input type="radio" name="radUsuarioRole" value="@CNT.Administrador" />@CNT.Administrador
+                    <input type="radio" name="radUsuarioRole" value="@CNT.Cliente" />@CNT.Cliente
+                    <input type="radio" name="radUsuarioRole" value="@CNT.Paciente" />@CNT.Paciente
+                    <input type="radio" name="radUsuarioRole" value="@CNT.Medico" />@CNT.Medico
+                </div>
+               
+            </div>
+
+
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+        </form>
+    </div>
+    @* <div class="col-md-6 col-md-offset-2">
+        <section>
+            <h3>Use another service to register.</h3>
+            <hr />
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                {
+                    <div>
+                        <p>
+                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
+                            about setting up this ASP.NET application to support logging in via external services</a>.
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                @foreach (var provider in Model.ExternalLogins!)
+                                {
+                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                }
+                            </p>
+                        </div>
+                    </form>
+                }
+            }
+        </section>
+    </div> *@
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
